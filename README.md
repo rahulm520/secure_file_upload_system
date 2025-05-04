@@ -1,37 +1,41 @@
-# Secure File Upload System with Scan Logs
+🛡️ Secure File Upload System with Scan Logs
+A simple file upload system that scans files based on their extensions and logs the results in a MySQL database. The backend connects to MySQL using ODBC, and the frontend features a modern light-themed design with smooth animations.
 
-A simple file upload system that scans files based on their extensions and logs the results in a MySQL database. The backend connects to MySQL using ODBC and the frontend features a modern, light-themed design with smooth animations.
+🚀 Features
+🔐 User Login: Login for users to upload files.
 
-## Features
+🔍 File Scan: Files are scanned for suspicious extensions (e.g., .exe, .bat, .zip).
 
-- **User Login**: Login for users to upload files.
-- **File Scan**: Files are scanned for suspicious extensions (e.g., `.exe`, `.bat`, `.zip`).
-- **Admin Dashboard**: View file upload logs and scan results.
-- **Responsive UI**: Light theme with smooth animations.
+📊 Admin Dashboard: View file upload logs and scan results.
 
-## Tech Stack
+📱 Responsive UI: Light theme with smooth animations.
 
-- **Frontend**: HTML, CSS (Light theme, Animations)
-- **Backend**: PHP (ODBC for MySQL)
-- **Database**: MySQL
-- **File Scanning**: Extension-based scanning
+🛠️ Tech Stack
+Frontend: HTML, CSS (Light theme, Animations)
 
-## Installation
+Backend: PHP (ODBC for MySQL)
 
-1. Clone the repo:
-   ```bash
-   git clone https://github.com/your-username/secure-file-upload-system.git
-   cd secure-file-upload-system
-Place the project in the htdocs folder of XAMPP.
+Database: MySQL
 
-Create a MySQL database:
+File Scanning: Extension-based scanning
 
-```bash
+📦 Installation
+1. Clone the repository:
+bash
+Copy
+Edit
+git clone https://github.com/your-username/secure-file-upload-system.git
+cd secure-file-upload-system
+2. Place the project in the htdocs folder of XAMPP.
+3. Create a MySQL database:
+bash
+Copy
+Edit
 CREATE DATABASE secure_upload_db;
-
-Run the provided SQL commands to set up the tables.
-
-```bash
+4. Run the provided SQL commands to set up the necessary tables:
+bash
+Copy
+Edit
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
@@ -40,7 +44,6 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-```bash
 CREATE TABLE uploaded_files (
     id INT AUTO_INCREMENT PRIMARY KEY,
     filename VARCHAR(255) NOT NULL,
@@ -50,13 +53,11 @@ CREATE TABLE uploaded_files (
     uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (uploaded_by) REFERENCES users(id)
 );
+5. Configure the database connection in the includes/db.php file.
+6. Run Apache and MySQL on XAMPP, then visit the app at:
+http://localhost/secure-file-upload-system/dashboard.php
 
+📝 Usage
+👥 Users: Upload files via the dashboard. Files are scanned and logged with the scan result.
 
-Configure the database connection in includes/db.php.
-
-Run Apache and MySQL on XAMPP, then visit http://localhost/secure-file-upload-system/dashboard.php.
-
-Usage
-Users: Upload files via the dashboard. Files are scanned and logged.
-
-Admins: View logs of uploaded files in the admin dashboard.
+🛠️ Admins: View logs of uploaded files, including the scan results, in the admin dashboard.
