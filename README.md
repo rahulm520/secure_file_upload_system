@@ -26,8 +26,31 @@ Place the project in the htdocs folder of XAMPP.
 
 Create a MySQL database:
 
+```bash
 CREATE DATABASE secure_upload_db;
+
 Run the provided SQL commands to set up the tables.
+
+```bash
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    role ENUM('admin', 'user') NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+```bash
+CREATE TABLE uploaded_files (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    filename VARCHAR(255) NOT NULL,
+    filepath VARCHAR(255) NOT NULL,
+    uploaded_by INT,
+    result ENUM('clean', 'suspicious') NOT NULL,
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (uploaded_by) REFERENCES users(id)
+);
+
 
 Configure the database connection in includes/db.php.
 
